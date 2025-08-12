@@ -1,0 +1,28 @@
+services:
+  localstack:
+    image: 'localstack/localstack:latest'
+    container_name: 'localstack'
+    environment:
+      # Defines the available services
+      - SERVICES=s3,sqs,ses,lambda
+      - DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - DEBUG=1
+      - DATA_DIR=/var/lib/localstack
+      # Defines the Lambda executor as Docker – Use only when Lambda is defined in SERVICES
+      - LAMBDA_EXECUTOR=docker 
+      # - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:?}
+      # - PERSISTENCE=1
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4510-4559:4510-4559"
+    volumes:
+      - localstack-data:/var/lib/localstack
+      # Set the executor to Docker – Use only when Lambda is configured in SERVICES
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  
+volumes:
+  localstack-data:
+    name: localstack-volume 
