@@ -1,11 +1,14 @@
 # LocalStack
 
+Study purposes only.
+
 > [!WARNING]
 > This repository is for study purposes only. No warranty is provided.
 
 ## Requirements
 
-1. [LocalStack](https://app.localstack.cloud/sign-in) account for visual management of configured resources.
+- [Docker](https://docs.docker.com/get-docker/)
+- [LocalStack Account](https://app.localstack.cloud/sign-in)
 
 ## Run Locally
 
