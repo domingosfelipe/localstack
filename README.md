@@ -38,11 +38,38 @@ Study purposes only.
 
 ## Util AWS commands
 
-1. To purge queue (erase all queue messages):
+### List queues
 
-	```sh
-	aws --profile localstack sqs purge-queue \
-	--endpoint-url http://localhost:4566 \
-	--queue-url sample-queue \
-	--region us-east-1
-	```
+```sh
+aws --profile localstack sqs list-queues \
+--endpoint-url http://localhost:4566 \
+--region us-east-1
+```
+
+### Get queue URL
+
+```sh
+aws --profile localstack sqs get-queue-url \
+--endpoint-url http://localhost:4566 \
+--queue-name sample-queue \
+--region us-east-1
+```
+
+### Receive message
+
+```sh
+aws --profile localstack sqs receive-message \
+--endpoint-url http://localhost:4566 \
+--queue-url sample-queue \
+--region us-east-1 \
+--output json
+```
+
+### Purge queue
+
+```sh
+aws --profile localstack sqs purge-queue \
+--endpoint-url http://localhost:4566 \
+--queue-url sample-queue \
+--region us-east-1
+```
